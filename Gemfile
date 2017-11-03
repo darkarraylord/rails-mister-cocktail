@@ -60,4 +60,5 @@ gem 'figaro'
 gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
+gem "bootstrap-sass"
 
