@@ -1,0 +1,6 @@
+<%= form_for(@cocktail) do |f| %>
+  <div class="form-group">
+  <%= f.text_field :name, placeholder: "Enter a cocktail name", html: {:class => 'form-control'} %>
+  </div>
+  <%= f.submit %>
+<% end %>
