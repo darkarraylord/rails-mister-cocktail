@@ -1,0 +1,51 @@
+<div class="profile-header-wrapper">
+  <!-- Profile header -->
+  <div class="profile-header-info text-center">
+    <img src="http://lewagon.github.io/html-css-challenges/11-profile-with-tabs/images/papillard.jpeg" alt="Gil's profile" class="avatar-large">
+    <h1>@darkarraylord</h1>
+    <h2>Co founder @Vendimo</h2>
+  </div>
+  <!-- profile tabs -->
+  <div class="tabs">
+    <a class="tab active" href="#">
+      <h3>350</h3>
+      <p>Followers</p>
+    </a>
+    <a class="tab" href="#">
+      <h3>456</h3>
+      <p>Following</p>
+    </a>
+    <a class="tab" href="#">
+      <h3>189</h3>
+      <p>Upvoted</p>
+    </a>
+    <a class="tab" href="#">
+      <h3>13</h3>
+      <p>Submitted</p>
+    </a>
+  </div>
+</div>
+<div class="container">
+  <% @cocktails.each do |cocktail| %>
+  <div class="product">
+    <div class='product-upvote'>
+      <div class="product-arrow"></div>
+      <div class='product-count'>8</div>
+    </div>
+    <img src="kudoz.jpg" alt="kudoz" class="product-image hidden-xs">
+    <div class='product-body'>
+      <h3><%= cocktail.name %></h3>
+      <p><%= truncate(cocktail.instructions , :length => 50)%></p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <li><a href=""><i class="glyphicon glyphicon-glass"></i></a></li>
+      <li><a href=""><i class="glyphicon glyphicon-pencil"></i></a></li>
+      <li>
+        <%= link_to cocktail_path(id: cocktail.id), method: :delete do %>
+          <i class="glyphicon glyphicon-remove"></i>
+          <% end %>
+      </li>
+    </ul>
+  </div>
+<% end %>
+</div>

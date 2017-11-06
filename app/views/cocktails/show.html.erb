@@ -1,11 +1,63 @@
-<div class="container">
-  <div class="card">
-    <h1><%= @cocktail.name %></h1>
+<div class="head">
+  <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://res.cloudinary.com/gilcpd/image/upload/<% @cocktail.photos.each do |photo| %><%= photo.path %><% end %>');">
+    <div class="card-category"><%= @cocktail.category %></div>
+    <div class="card-description">
+      <h2><%= @cocktail.name %></h2>
+      <p>Very cool city, the best</p>
+    </div>
+    <div class="card-actions">
+      <ul class="list-inline">
+        <a href="#"><i class="fa fa-instagram"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-heart"></i></a>
+      </ul>
+    </div>
+    <a href="#"><img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay"></a>
   </div>
-  <h2>Add Ingredients</h2>
-  start form to add ingredients
+  <!-- end cocktail profile-->
 </div>
+<div class="container">
+  <div class="doses">
+      <h2><%= @cocktail.name %> - <small><%= @cocktail.alcoholic %></small></h2>
+      <p> <strong>Instructions</strong> <%= @cocktail.instructions %></p>
+    <div class="data-block">
 
-<% @cocktail.photos.each do |photo| %>
-  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
-<% end %>
+      <ul class="list">
+        <% @cocktail.doses.each do |dose| %>
+        <li>
+          <%= dose.description %> of <%= dose.ingredient.name %>
+          <%= link_to "Remove this dose", dose_path(id: dose.id), method: :delete %>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to  new_cocktail_dose_path(cocktail_id: @cocktail.id) do %>
+      <span><i class="fa fa-heart"></i> Add another dose</span>
+      <% end %>
+
+    </div>
+    <div class="data-block">
+      <% @cocktail.comments.each do |comment|  %>
+        <div class="message">
+          <img class="avatar-large" src="https://kitt.lewagon.com/placeholder/users/gabriel-dehan">
+          <div class="message-name">
+            <h3>Gab Dehan</h3>
+            <p>10/07/17</p>
+          </div>
+          <div class="message-body">
+            <p><strong>I am not sure yet!</strong></p>
+            <p>
+              <%= comment.comment %>
+            </p>
+          </div>
+          <div class="message-status">
+            <p class="status pending">Pending</p>
+            <p class="price">€345</p>
+          </div>
+        </div>
+      <% end %>
+    <%= link_to "add comment", new_cocktail_comment_path(cocktail_id: @cocktail.id)%>
+    </div>
+    <!-- end of cocktail data-->
+  </div>
+</div>

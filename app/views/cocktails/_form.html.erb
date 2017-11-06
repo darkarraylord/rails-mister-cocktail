@@ -2,6 +2,12 @@
   <%= simple_form_for(@cocktail) do |f| %>
   <div class="form-group">
     <%= f.input :name, placeholder: "Enter a cocktail name", html: {:class => 'form-control'} %>
+    <%= f.input :category, placeholder: "Enter a cocktail category", html: {:class => 'form-control'} %>
+    <%= f.input :alcoholic, placeholder: "Is it alcoholic?", html: {:class => 'form-control'} %>
+    <%= f.input :instructions, as: :text, html: {:class => 'form-control'} %>
+    <div class="form-inline">
+      <%= f.input :difficulty, as: :radio_buttons, collection: 0..5 %>
+    </div>
     <%= f.input :photos, as: :attachinary %>
   </div>
   <%= f.submit %>

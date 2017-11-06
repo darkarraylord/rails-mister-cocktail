@@ -61,4 +61,6 @@ gem 'cloudinary'
 gem 'attachinary', github: 'assembler/attachinary'
 gem 'jquery-fileupload-rails'
 gem "bootstrap-sass"
-
+gem "font-awesome-sass"
+gem "autoprefixer-rails"
+gem 'faker'

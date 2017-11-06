@@ -1,10 +1,50 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
+<div class="container">
+  <div class="search-form">
+    <form action="search" method="get" class="form-inline text-center">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Blood mary...">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="category-carousel">
+    <div class="header">
+      <h3>Explore cocktails recipes</h3>
+      <%= link_to "See All >", "#", class: "link" %>
+    </div>
+  </div>
 
-<%= link_to "Create New Cocktail", new_cocktail_path %>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(id: cocktail.id) %></li>
-  <% end %>
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" style="margin:5px; padding: 10px; background-color: white;    box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);">
+      <div style="width: 20rem;">
+        <img src="http://res.cloudinary.com/gilcpd/image/upload/<% cocktail.photos.each do |photo| %><%= photo.path %><% end %>" alt="Card image cap" width="100%" height="180">
 
-</ul>
+          <h4 class="card-title"><%= link_to cocktail.name, cocktail_path(id: cocktail.id) %></h4>
+          <p class="card-text"><%= truncate(cocktail.instructions, :length => 17) %></p>
+
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <h3>Most voted cocktails</h3>
+  <div class="product">
+    <div class='product-upvote'>
+      <div class="product-arrow"></div>
+      <div class='product-count'>95</div>
+    </div>
+    <div class='product-body'>
+      <h3>Kudoz</h3>
+      <p>Best job offers on your phone</p>
+    </div>
+    <ul class="list-inline product-controls hidden-sm hidden-xs">
+      <li><a href=""><i class="fa fa-heart"></i></a></li>
+      <li><a href=""><i class="fa fa-share"></i></a></li>
+      <li><a href=""><i class="fa fa-star"></i></a></li>
+    </ul>
+  </div>
+
+</div>
+
+
