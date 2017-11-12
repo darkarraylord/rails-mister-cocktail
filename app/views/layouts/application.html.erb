@@ -16,9 +16,13 @@
         <%= image_tag "logo.png" %>
       <% end %>
 
+
       <!-- Right Navigation -->
       <div class="navbar-wagon-right hidden-xs hidden-sm">
-
+        <%= form_tag(search_path, :method => "get", id: "search-form", :class => "navbar-form navbar-right") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search Cocktails", :class => "form-control" %>
+          <%= submit_tag "Search", :name => nil, :class => "btn btn-primary btn-lg" %>
+        <% end %>
         <!-- Links -->
         <%= link_to "Add Cocktail", new_cocktail_path, class: "navbar-wagon-item navbar-wagon-link" %>
         <%= link_to "Cocktails", cocktails_path, class: "navbar-wagon-item navbar-wagon-link" %>

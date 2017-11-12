@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="alert alert-info" role="alert">
+      Your search <%= params[:search].downcase.strip %> resulted in <%= @cocktails.count %> cocktails
+    </div>
+  <div class="results">
+    <% @cocktails.each do |cocktail|  %>
+    <div class="row">
+    <div class="col-xs-3">
+      <%= cl_image_tag cocktail.photos.last.path, :crop => "fill", :width => 200, :height => 200 %></div>
+      <div class="col-xs-6">
+        <h3><%= link_to cocktail.name, cocktail_path(id: cocktail.id) %></h3>
+        <%= cocktail.instructions %>
+      </div>
+      <div class="col-xs-3">
+      date and other actions</div>
+    </div>
+  </div>
+    <% end %>
+
+  </div>
+</div>

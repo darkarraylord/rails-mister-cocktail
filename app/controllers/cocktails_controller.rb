@@ -1,6 +1,15 @@
 class CocktailsController < ApplicationController
   def index
+    @cocktails = Cocktail.last(4)
+  end
+
+  def search
     @cocktails = Cocktail.all
+    if params[:search]
+      @cocktails = Cocktail.search(params[:search], order: :name)
+    else
+      @cocktails = Cocktail.all.order("created_at DESC")
+    end
   end
 
   def show

@@ -64,3 +64,6 @@ gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem "autoprefixer-rails"
 gem 'faker'
+gem 'mysql2',          '~> 0.3', :platform => :ruby
+gem 'jdbc-mysql',      '= 5.1.35', :platform => :jruby
+gem 'thinking-sphinx', '~> 3.4.2'
